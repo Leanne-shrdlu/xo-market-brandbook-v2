@@ -1,19 +1,35 @@
 import type { Metadata } from 'next'
-import { Inter, Noto_Sans_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import TopNav from '@/components/TopNav'
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-inter',
+const rubik = localFont({
+  src: [
+    {
+      path: '../public/fonts/Rubik-VariableFont_wght.ttf',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Rubik-Italic-VariableFont_wght.ttf',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-rubik',
   display: 'swap',
 })
 
-const notoSansMono = Noto_Sans_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-noto-mono',
+const figtree = localFont({
+  src: [
+    {
+      path: '../public/fonts/Figtree-VariableFont_wght.ttf',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/Figtree-Italic-VariableFont_wght.ttf',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-figtree',
   display: 'swap',
 })
 
@@ -29,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${notoSansMono.variable}`}>
-      <body>
+    <html lang="en" className={`${rubik.variable} ${figtree.variable}`}>
+      <body className={rubik.className}>
         {/* Fixed viewport shell — the brand canvas lives inside here */}
         <div
           id="root"

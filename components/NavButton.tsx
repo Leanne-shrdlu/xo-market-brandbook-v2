@@ -44,7 +44,9 @@ export default function NavButton({
 
   const isSmall = scrollProgress > 0.12
   const isBlue = scrollProgress > 0.025
-  const bgColor = isBlue ? '#0061ff' : '#ffffff'
+  const bgColor = isBlue
+    ? 'linear-gradient(270deg, rgb(255, 135, 166) 0%, rgb(168, 110, 245) 100%)'
+    : '#ffffff'
   const borderRadius = isSmall ? '50%' : Math.min(24, size / 20)
 
   return (
@@ -65,7 +67,7 @@ export default function NavButton({
           background: bgColor,
           boxShadow: !isBlue
             ? '0 0 0 1px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.1)'
-            : '0 4px 32px rgba(0,97,255,0.3)',
+            : '0 4px 32px rgba(168,110,245,0.35)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',

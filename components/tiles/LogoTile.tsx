@@ -24,8 +24,8 @@ export default function LogoTile({ hovered }: { hovered: boolean }) {
         <Image
           src="/brand/XO Market Logo Coloured.svg"
           alt="XO Market"
-          width={140}
-          height={56}
+          width={210}
+          height={84}
           unoptimized
           style={{ objectFit: 'contain' }}
         />
@@ -42,8 +42,8 @@ export default function LogoTile({ hovered }: { hovered: boolean }) {
         <Image
           src="/brand/XO Market Logo White.svg"
           alt="XO Market"
-          width={140}
-          height={56}
+          width={210}
+          height={84}
           unoptimized
           style={{ objectFit: 'contain' }}
         />

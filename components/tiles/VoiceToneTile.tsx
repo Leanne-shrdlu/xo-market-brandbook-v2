@@ -1,4 +1,7 @@
-// Voice & Tone tile — Two large quotation marks, slide toward center on hover
+import Image from 'next/image'
+
+// Voice & Tone tile — Two large quotation marks slide toward center on hover.
+// A megaphone sits centered between the quotes; swaps light→dark on hover.
 export default function VoiceToneTile({ hovered }: { hovered: boolean }) {
   return (
     <div
@@ -35,6 +38,41 @@ export default function VoiceToneTile({ hovered }: { hovered: boolean }) {
             style={{ transition: 'fill 0.35s ease' }}
           />
         </svg>
+      </div>
+
+      {/* Megaphone — centered between the quotes */}
+      <div
+        style={{
+          position: 'relative',
+          width: '32%',
+          aspectRatio: '1 / 1',
+          flexShrink: 0,
+        }}
+      >
+        {/* Light megaphone — visible by default, fades out on hover */}
+        <Image
+          src="/brand/megaphone1.svg"
+          alt="Megaphone"
+          fill
+          unoptimized
+          style={{
+            objectFit: 'contain',
+            opacity: hovered ? 0 : 1,
+            transition: 'opacity 0.35s ease',
+          }}
+        />
+        {/* Dark megaphone — hidden by default, fades in on hover */}
+        <Image
+          src="/brand/megaphone2.svg"
+          alt="Megaphone"
+          fill
+          unoptimized
+          style={{
+            objectFit: 'contain',
+            opacity: hovered ? 1 : 0,
+            transition: 'opacity 0.35s ease',
+          }}
+        />
       </div>
 
       {/* Closing quote — bottom right */}

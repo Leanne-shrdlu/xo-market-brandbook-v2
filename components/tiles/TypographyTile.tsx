@@ -1,5 +1,9 @@
-// Typography tile — "Aa" letters, on hover become outlined
+// Typography tile
+// Default: white tile bg (set in NavContainer), black "Aa".
+// Hover:   NavTile switches tile bg to #1a1a1a; text transitions to white.
 export default function TypographyTile({ hovered }: { hovered: boolean }) {
+  const textColor = hovered ? '#ffffff' : '#000000'
+
   return (
     <div
       style={{
@@ -16,7 +20,7 @@ export default function TypographyTile({ hovered }: { hovered: boolean }) {
         viewBox="0 0 260 190"
         style={{ width: '88%', height: '88%', overflow: 'visible' }}
       >
-        {/* Large "A" — filled by default, outline on hover */}
+        {/* Large "A" */}
         <text
           x="10"
           y="168"
@@ -24,27 +28,21 @@ export default function TypographyTile({ hovered }: { hovered: boolean }) {
           fontFamily="'Inter', -apple-system, sans-serif"
           fontWeight="700"
           letterSpacing="-6"
-          fill={hovered ? 'none' : '#ffffff'}
-          stroke={hovered ? '#ffffff' : 'none'}
-          strokeWidth={hovered ? '2.5' : '0'}
-          paintOrder="stroke"
-          style={{ transition: 'fill 0.35s ease, stroke 0.35s ease' }}
+          fill={textColor}
+          style={{ transition: 'fill 0.35s ease' }}
         >
           A
         </text>
 
-        {/* Small "a" — filled by default, outline on hover */}
+        {/* Small "a" — x moved from 155 → 122 to sit tighter against the A */}
         <text
-          x="155"
+          x="122"
           y="165"
           fontSize="108"
           fontFamily="'Inter', -apple-system, sans-serif"
           fontWeight="400"
-          fill={hovered ? 'none' : 'rgba(255,255,255,0.72)'}
-          stroke={hovered ? 'rgba(255,255,255,0.72)' : 'none'}
-          strokeWidth={hovered ? '2' : '0'}
-          paintOrder="stroke"
-          style={{ transition: 'fill 0.35s ease, stroke 0.35s ease' }}
+          fill={textColor}
+          style={{ transition: 'fill 0.35s ease' }}
         >
           a
         </text>

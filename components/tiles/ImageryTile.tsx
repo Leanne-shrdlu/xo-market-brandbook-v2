@@ -1,4 +1,5 @@
-// Imagery tile — Hills landscape with sun/moon, rotates to night on hover
+// Imagery tile — Hills landscape with sun/moon, rotates to night on hover.
+// Mascot sits bottom-right at ~1/3 tile height; dips down and fades out on hover.
 export default function ImageryTile({ hovered }: { hovered: boolean }) {
   return (
     <div
@@ -90,6 +91,30 @@ export default function ImageryTile({ hovered }: { hovered: boolean }) {
           style={{ transition: 'fill 0.45s ease, stroke 0.45s ease' }}
         />
       </svg>
+
+      {/* Mascot — sits bottom-right at ~1/3 tile height.
+          On hover: slides down 40px and fades out, clipped by overflow:hidden. */}
+      <div
+        style={{
+          position: 'absolute',
+          right: 0,
+          bottom: 0,
+          height: '62%',
+          display: 'flex',
+          alignItems: 'flex-end',
+          pointerEvents: 'none',
+          opacity: hovered ? 0 : 1,
+          transform: hovered ? 'translateY(40px)' : 'translateY(0)',
+          transition: 'opacity 0.38s ease, transform 0.38s cubic-bezier(0.4,0,0.2,1)',
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/brand/Deek_Pose_1.png"
+          alt="XO Market mascot"
+          style={{ height: '100%', width: 'auto', display: 'block' }}
+        />
+      </div>
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
-import TopNav from '@/components/TopNav'
 
 const rubik = localFont({
   src: [
@@ -59,7 +58,6 @@ export default function RootLayout({
             overflow: 'hidden',
           }}
         >
-          <TopNav />
           {children}
         </div>
       </body>

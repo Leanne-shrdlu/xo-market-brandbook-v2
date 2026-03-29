@@ -87,7 +87,7 @@ export default function NavTile({
         >
           <span
             style={{
-              fontSize: 16,
+              fontSize: 22,
               fontWeight: 600,
               letterSpacing: '0.01em',
               fontFamily: 'var(--font-rubik)',

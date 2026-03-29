@@ -4,11 +4,9 @@ import { useEffect, useState } from 'react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import NavButton from './NavButton'
 import NavTile from './NavTile'
-import FrameworkTile from './tiles/FrameworkTile'
 import VoiceToneTile from './tiles/VoiceToneTile'
 import LogoTile from './tiles/LogoTile'
 import TypographyTile from './tiles/TypographyTile'
-import IconographyTile from './tiles/IconographyTile'
 import ColorTile from './tiles/ColorTile'
 import ImageryTile from './tiles/ImageryTile'
 import MotionTile from './tiles/MotionTile'
@@ -26,19 +24,10 @@ interface TileConfig {
 
 const TILES: TileConfig[] = [
   {
-    id: 'framework',
-    label: 'Framework',
-    color: '#1e2d3d',
-    textColor: '#ffffff',
-    offsetX: 4,
-    offsetY: 2,
-    component: FrameworkTile,
-  },
-  {
     id: 'voice-tone',
     label: 'Voice & Tone',
-    color: '#f5c842',
-    textColor: '#3d2800',
+    color: '#ff9500',
+    textColor: '#3d1a00',
     offsetX: -0.1,
     offsetY: 1,
     component: VoiceToneTile,
@@ -46,7 +35,7 @@ const TILES: TileConfig[] = [
   {
     id: 'logo',
     label: 'Logo',
-    color: '#5fd0f0',
+    color: '#18daeb',
     textColor: '#003d4d',
     offsetX: -1,
     offsetY: -0.1,
@@ -55,26 +44,17 @@ const TILES: TileConfig[] = [
   {
     id: 'typography',
     label: 'Typography',
-    color: '#e8471c',
-    textColor: '#ffffff',
+    color: '#ffffff',
+    textColor: '#000000',
     offsetX: -4,
     offsetY: 2,
     component: TypographyTile,
   },
   {
-    id: 'iconography',
-    label: 'Iconography',
-    color: '#9fd46a',
-    textColor: '#1a3d00',
-    offsetX: 4,
-    offsetY: -2,
-    component: IconographyTile,
-  },
-  {
     id: 'color',
     label: 'Color',
-    color: '#111111',
-    textColor: '#ffffff',
+    color: '#d0fa49',
+    textColor: '#1a2600',
     offsetX: 1,
     offsetY: 0.1,
     component: ColorTile,
@@ -82,8 +62,8 @@ const TILES: TileConfig[] = [
   {
     id: 'imagery',
     label: 'Imagery',
-    color: '#8b1a4a',
-    textColor: '#ffffff',
+    color: '#ff87a6',
+    textColor: '#4d0020',
     offsetX: 0.1,
     offsetY: -1,
     component: ImageryTile,
@@ -91,7 +71,7 @@ const TILES: TileConfig[] = [
   {
     id: 'motion',
     label: 'Motion',
-    color: '#c9a8d9',
+    color: '#a293ff',
     textColor: '#2d0050',
     offsetX: -4,
     offsetY: -2,
@@ -157,14 +137,14 @@ export default function NavContainer() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateColumns: 'repeat(3, 1fr)',
           gridTemplateRows: 'repeat(2, 1fr)',
           pointerEvents: tileProgress > 0.55 ? 'all' : 'none',
         }}
       >
         {TILES.map((tile) => {
           const TileComponent = tile.component
-          const tileW = vw / 4
+          const tileW = vw / 3
           const tileH = vh / 2
           const tx = tile.offsetX * tileW * (1 - tileProgress)
           const ty = tile.offsetY * tileH * (1 - tileProgress)
@@ -219,7 +199,7 @@ function GridLines({ loaded, opacity }: { loaded: boolean; opacity: number }) {
         transition: 'opacity 0.4s ease',
       }}
     >
-      {[25, 50, 75].map((pct, i) => (
+      {[33.333, 66.666].map((pct, i) => (
         <div
           key={`v${pct}`}
           style={{

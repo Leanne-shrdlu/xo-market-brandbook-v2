@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color--identity--blue: #0061ff;
+  --color--identity--yellow: #f7d154;
+  --color--identity--on-yellow: #3d2800;
+  --color--identity--red: #ff4e00;
+  --color--identity--orange: #f5882a;
+  --color--identity--green: #b8e986;
+  --color--identity--on-green: #1a3d00;
+  --color--identity--cyan: #62d4f0;
+  --color--identity--on-cyan: #003d4d;
+  --color--identity--pink: #e8a0b4;
+  --color--identity--purple: #c4a8d4;
+  --color--accent--azalea: #e87fa0;
+  --color--accent--pink: #d4688c;
+  --color--accent--rust: #c84b1e;
+  --color--accent--line-solid: rgba(0, 0, 0, 0.12);
+  --text--base: #1a1a1a;
+  --surface--background-dark: #1a1a1a;
+  --accent--tab: #0061ff;
+
+  --button-size: 90px;
+  --font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-noto-mono), 'Courier New', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background: #ffffff;
+  color: var(--text--base);
+  /* 400vh scroll height for the brand animation on the home page */
+  height: 400vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+svg {
+  display: block;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+}

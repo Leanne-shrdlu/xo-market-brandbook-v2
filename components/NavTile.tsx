@@ -87,10 +87,10 @@ export default function NavTile({
         >
           <span
             style={{
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 600,
               letterSpacing: '0.01em',
-              fontFamily: 'var(--font-family)',
+              fontFamily: 'var(--font-rubik)',
               color: 'inherit',
               lineHeight: 1,
               userSelect: 'none',

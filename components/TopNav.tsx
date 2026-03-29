@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -92,7 +93,7 @@ export default function TopNav() {
           gap: 4,
         }}
       >
-        {/* Dropbox mark */}
+        {/* XO Market logomark */}
         <Link
           href="/"
           style={{
@@ -102,17 +103,18 @@ export default function TopNav() {
             width: 36,
             height: 36,
             marginBottom: 12,
-            color: '#0061ff',
             flexShrink: 0,
           }}
-          aria-label="Dropbox Brand Home"
+          aria-label="XO Market Brand Home"
         >
-          <svg viewBox="0 0 46 42" width="22" height="20" fill="currentColor">
-            <path d="M11.4995 2L0 9.31249L11.4995 16.625L23.001 9.31249L34.5005 16.625L46 9.31249L34.5005 2L23.001 9.31249L11.4995 2Z" />
-            <path d="M11.4995 31.2501L0 23.9376L11.4995 16.625L23.001 23.9376L11.4995 31.2501Z" />
-            <path d="M23.001 23.9376L34.5005 16.625L46 23.9376L34.5005 31.2501L23.001 23.9376Z" />
-            <path d="M23.001 41L11.4995 33.6875L23.001 26.375L34.5005 33.6875L23.001 41Z" />
-          </svg>
+          <Image
+            src="/brand/XO Market Logomark Coloured.svg"
+            alt="XO Market"
+            width={32}
+            height={32}
+            unoptimized
+            priority
+          />
         </Link>
 
         {/* Divider */}
@@ -161,28 +163,19 @@ export default function TopNav() {
           borderBottom: '1px solid rgba(255,255,255,0.06)',
         }}
       >
-        {/* Logo */}
+        {/* XO Market logo (full, white for dark bar) */}
         <Link
           href="/"
-          style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#0061ff' }}
+          style={{ display: 'flex', alignItems: 'center' }}
         >
-          <svg viewBox="0 0 46 42" width="20" height="18" fill="currentColor">
-            <path d="M11.4995 2L0 9.31249L11.4995 16.625L23.001 9.31249L34.5005 16.625L46 9.31249L34.5005 2L23.001 9.31249L11.4995 2Z" />
-            <path d="M11.4995 31.2501L0 23.9376L11.4995 16.625L23.001 23.9376L11.4995 31.2501Z" />
-            <path d="M23.001 23.9376L34.5005 16.625L46 23.9376L34.5005 31.2501L23.001 23.9376Z" />
-            <path d="M23.001 41L11.4995 33.6875L23.001 26.375L34.5005 33.6875L23.001 41Z" />
-          </svg>
-          <span
-            style={{
-              fontSize: 13,
-              fontWeight: 600,
-              color: '#ffffff',
-              letterSpacing: '0.02em',
-              fontFamily: 'var(--font-family)',
-            }}
-          >
-            Brand
-          </span>
+          <Image
+            src="/brand/XO Market Logo White.svg"
+            alt="XO Market"
+            width={110}
+            height={32}
+            unoptimized
+            priority
+          />
         </Link>
 
         {/* Hamburger */}
@@ -263,7 +256,7 @@ export default function TopNav() {
                   color: isActive ? '#0061ff' : 'rgba(255,255,255,0.75)',
                   fontSize: 14,
                   fontWeight: isActive ? 600 : 400,
-                  fontFamily: 'var(--font-family)',
+                  fontFamily: 'var(--font-rubik)',
                   textDecoration: 'none',
                   transition: 'color 0.2s ease',
                 }}
@@ -341,7 +334,7 @@ function SidebarItem({
             color: '#ffffff',
             fontSize: 12,
             fontWeight: 500,
-            fontFamily: 'var(--font-family)',
+            fontFamily: 'var(--font-rubik)',
             padding: '5px 10px',
             borderRadius: 6,
             whiteSpace: 'nowrap',

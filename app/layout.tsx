@@ -33,9 +33,9 @@ const figtree = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Dropbox Brand Guidelines',
+  title: 'XO Market Brand Guidelines',
   description:
-    'From icons to illustration, logos to language — the foundation for how Dropbox looks, feels, and sounds.',
+    'From icons to illustration, logos to language — the foundation for how XO Market looks, feels, and sounds.',
 }
 
 export default function RootLayout({

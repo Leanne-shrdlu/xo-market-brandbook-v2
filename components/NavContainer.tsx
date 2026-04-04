@@ -10,6 +10,12 @@ import TypographyTile from './tiles/TypographyTile'
 import ColorTile from './tiles/ColorTile'
 import ImageryTile from './tiles/ImageryTile'
 import MotionTile from './tiles/MotionTile'
+import LogoModal from './LogoModal'
+import VoiceToneModal from './VoiceToneModal'
+import TypographyModal from './TypographyModal'
+import ColorModal from './ColorModal'
+import ImageryModal from './ImageryModal'
+import MotionModal from './MotionModal'
 import type { ComponentType } from 'react'
 
 interface TileConfig {
@@ -63,7 +69,7 @@ const TILES: TileConfig[] = [
     id: 'imagery',
     label: 'Imagery',
     color: '#ff87a6',
-    textColor: '#4d0020',
+    textColor: '#1a1a1a',
     offsetX: 0.1,
     offsetY: -1,
     component: ImageryTile,
@@ -83,6 +89,7 @@ export default function NavContainer() {
   const { scrollProgress, easedProgress, hasScrolled } = useScrollAnimation()
   const [loaded, setLoaded] = useState(false)
   const [showChevrons, setShowChevrons] = useState(false)
+  const [openModal, setOpenModal] = useState<string | null>(null)
   const [vw, setVw] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth : 1440
   )
@@ -160,6 +167,7 @@ export default function NavContainer() {
               transform={`translate(${tx}px, ${ty}px) scale(${scale})`}
               progress={tileProgress}
               TileComponent={TileComponent}
+              onOpenModal={() => setOpenModal(tile.id)}
             />
           )
         })}
@@ -178,6 +186,14 @@ export default function NavContainer() {
 
       {/* Scroll chevrons */}
       {showChevrons && !hasScrolled && scrollProgress < 0.015 && <ScrollChevrons />}
+
+      {/* Modals */}
+      {openModal === 'logo' && <LogoModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'voice-tone' && <VoiceToneModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'typography' && <TypographyModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'color' && <ColorModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'imagery' && <ImageryModal onClose={() => setOpenModal(null)} />}
+      {openModal === 'motion' && <MotionModal onClose={() => setOpenModal(null)} />}
     </div>
   )
 }

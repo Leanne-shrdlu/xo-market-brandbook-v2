@@ -34,9 +34,9 @@ export default function TypographyTile({ hovered }: { hovered: boolean }) {
           A
         </text>
 
-        {/* Small "a" — x moved from 155 → 122 to sit tighter against the A */}
+        {/* Small "a" */}
         <text
-          x="122"
+          x="128"
           y="165"
           fontSize="108"
           fontFamily="'Inter', -apple-system, sans-serif"

@@ -2,6 +2,11 @@
 // Mascot sits bottom-right at ~1/3 tile height; dips down and fades out on hover.
 export default function ImageryTile({ hovered }: { hovered: boolean }) {
   return (
+    <>
+    <style>{`
+      .imagery-tile-mascot { height: 62%; }
+      @media (max-width: 600px) { .imagery-tile-mascot { height: 40%; } }
+    `}</style>
     <div
       style={{
         width: '100%',
@@ -95,11 +100,11 @@ export default function ImageryTile({ hovered }: { hovered: boolean }) {
       {/* Mascot — sits bottom-right at ~1/3 tile height.
           On hover: slides down 40px and fades out, clipped by overflow:hidden. */}
       <div
+        className="imagery-tile-mascot"
         style={{
           position: 'absolute',
           right: 0,
           bottom: 0,
-          height: '62%',
           display: 'flex',
           alignItems: 'flex-end',
           pointerEvents: 'none',
@@ -116,5 +121,6 @@ export default function ImageryTile({ hovered }: { hovered: boolean }) {
         />
       </div>
     </div>
+    </>
   )
 }

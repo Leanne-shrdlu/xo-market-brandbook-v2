@@ -25,7 +25,7 @@ export default function NavButton({
     }
   }, [loaded])
 
-  // Compute button size based on scroll progress
+  // Compute circle size based on scroll progress
   let size: number
   if (scrollProgress <= 0.05) {
     const t = scrollProgress / 0.05
@@ -38,12 +38,20 @@ export default function NavButton({
   }
   size = Math.max(90, Math.round(size))
 
+  // Scroll-linked shrink: tiles are visually settled around easedProgress ~0.92+.
+  // The circle shrinks from full (scale=1) to zero over the final scroll range.
+  // Using easedProgress means: scroll up → eased goes down → circle grows back. Fully reversible.
+  const SHRINK_START = 0.99
+  const SHRINK_END   = 1.00
+  const shrinkT     = Math.min(1, Math.max(0, (easedProgress - SHRINK_START) / (SHRINK_END - SHRINK_START)))
+  const circleScale = 1 - shrinkT
+
   const showText1 = scrollProgress < 0.04
   const showText2 = scrollProgress >= 0.04 && scrollProgress <= 0.14
-  const showLogo = scrollProgress > 0.14
+  const showLogo  = scrollProgress > 0.14
 
   const isSmall = scrollProgress > 0.12
-  const isBlue = scrollProgress > 0.025
+  const isBlue  = scrollProgress > 0.025
   const bgColor = isBlue
     ? 'linear-gradient(270deg, rgb(255, 135, 166) 0%, rgb(168, 110, 245) 100%)'
     : '#ffffff'
@@ -55,8 +63,12 @@ export default function NavButton({
         position: 'absolute',
         top: '50%',
         left: '50%',
-        transform: 'translate(-50%, -50%)',
+        transform: `translate(-50%, -50%) scale(${circleScale})`,
+        transformOrigin: 'center center',
+        opacity: 1,
         zIndex: 50,
+        pointerEvents: 'none',
+        transition: 'transform 0.6s cubic-bezier(0.4,0,0.2,1)',
       }}
     >
       <div
@@ -118,7 +130,7 @@ export default function NavButton({
           </p>
         </div>
 
-        {/* State 2: blue medium — description text */}
+        {/* State 2: gradient medium — description text */}
         <div
           style={{
             position: 'absolute',
@@ -151,7 +163,7 @@ export default function NavButton({
           </p>
         </div>
 
-        {/* State 3: small nav circle — XO Market logomark */}
+        {/* State 3: small circle — XO Market logomark */}
         <div
           style={{
             position: 'absolute',

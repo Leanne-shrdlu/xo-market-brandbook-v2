@@ -11,6 +11,7 @@ interface NavTileProps {
   transform: string
   progress: number
   TileComponent: ComponentType<{ hovered: boolean }>
+  onOpenModal?: () => void
 }
 
 export default function NavTile({
@@ -21,16 +22,27 @@ export default function NavTile({
   transform,
   progress,
   TileComponent,
+  onOpenModal,
 }: NavTileProps) {
   const [hovered, setHovered] = useState(false)
 
   const isVisible = progress > 0.08
 
   return (
+    <>
+    <style>{`
+      .nav-tile-bar { padding: 20px 24px; }
+      .nav-tile-label { font-size: 22px; }
+      @media (max-width: 600px) {
+        .nav-tile-bar { padding: 10px 12px; }
+        .nav-tile-label { font-size: clamp(13px, 4vw, 17px); }
+      }
+    `}</style>
     <div
       data-tile-id={id}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onOpenModal}
       style={{
         position: 'relative',
         background: hovered ? '#1a1a1a' : color,
@@ -73,12 +85,12 @@ export default function NavTile({
 
         {/* Bottom label bar */}
         <div
+          className="nav-tile-bar"
           style={{
             position: 'absolute',
             bottom: 0,
             left: 0,
             right: 0,
-            padding: '20px 24px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -86,8 +98,8 @@ export default function NavTile({
           }}
         >
           <span
+            className="nav-tile-label"
             style={{
-              fontSize: 22,
               fontWeight: 600,
               letterSpacing: '0.01em',
               fontFamily: 'var(--font-rubik)',
@@ -121,5 +133,6 @@ export default function NavTile({
         </div>
       </div>
     </div>
+    </>
   )
 }

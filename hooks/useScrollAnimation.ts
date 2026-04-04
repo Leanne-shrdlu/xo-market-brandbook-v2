@@ -74,3 +74,4 @@ export function useScrollAnimation(): ScrollAnimationState {
 
   return { scrollProgress, easedProgress, hasScrolled }
 }
+

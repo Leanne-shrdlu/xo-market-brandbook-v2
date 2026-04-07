@@ -6,9 +6,10 @@ import { createPortal } from 'react-dom'
 interface TileModalProps {
   onClose: () => void
   children: React.ReactNode
+  title?: string
 }
 
-export default function TileModal({ onClose, children }: TileModalProps) {
+export default function TileModal({ onClose, children, title }: TileModalProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -65,33 +66,62 @@ export default function TileModal({ onClose, children }: TileModalProps) {
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button */}
-        <button
-          onClick={onClose}
-          aria-label="Close modal"
+        {/* Sticky header: title + close button */}
+        <div
           style={{
-            position: 'absolute',
-            top: '20px',
-            right: '24px',
+            position: 'sticky',
+            top: 0,
             zIndex: 10,
-            width: '36px',
-            height: '36px',
+            background: '#ffffff',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            cursor: 'pointer',
-            background: 'none',
-            border: 'none',
-            fontSize: '18px',
-            fontWeight: 800,
-            color: '#1a1a1a',
-            lineHeight: 1,
-            fontFamily: 'var(--font-rubik)',
-            padding: 0,
+            padding: '20px 64px',
+            minHeight: '64px',
           }}
         >
-          ✕
-        </button>
+          {title && (
+            <h1
+              style={{
+                fontSize: 'clamp(22px, 3vw, 32px)',
+                fontWeight: 800,
+                color: '#1a1a1a',
+                lineHeight: 1.05,
+                margin: 0,
+                fontFamily: 'var(--font-rubik)',
+                textAlign: 'center',
+              }}
+            >
+              {title}
+            </h1>
+          )}
+          <button
+            onClick={onClose}
+            aria-label="Close modal"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              right: '24px',
+              transform: 'translateY(-50%)',
+              width: '36px',
+              height: '36px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              background: 'none',
+              border: 'none',
+              fontSize: '18px',
+              fontWeight: 800,
+              color: '#1a1a1a',
+              lineHeight: 1,
+              fontFamily: 'var(--font-rubik)',
+              padding: 0,
+            }}
+          >
+            ✕
+          </button>
+        </div>
 
         {children}
       </div>

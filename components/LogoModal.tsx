@@ -9,7 +9,7 @@ interface LogoModalProps {
 
 export default function LogoModal({ onClose }: LogoModalProps) {
   return (
-    <TileModal onClose={onClose}>
+    <TileModal onClose={onClose} title="Logo">
       <style>{`
         .logo-modal-grid {
           display: grid;
@@ -56,38 +56,15 @@ export default function LogoModal({ onClose }: LogoModalProps) {
             gap: 20px;
           }
         }
-        .logo-title-wrap { padding: 48px 72px 0; }
-        .logo-section-black { padding: 0 72px 40px; }
+        .logo-section-black { padding: 32px 72px 40px; }
         .logo-section-white { padding: 32px 72px 40px; }
         .logo-footer { padding: 20px 72px 28px; }
         @media (max-width: 600px) {
-          .logo-title-wrap { padding: 32px 20px 0; }
-          .logo-section-black { padding: 0 20px 32px; }
+          .logo-section-black { padding: 24px 20px 32px; }
           .logo-section-white { padding: 24px 20px 32px; }
           .logo-footer { padding: 16px 20px 24px; }
         }
       `}</style>
-
-      {/* Title */}
-      <div
-        className="logo-title-wrap"
-        style={{
-          textAlign: 'center',
-          fontFamily: 'var(--font-rubik)',
-        }}
-      >
-        <h1
-          style={{
-            fontSize: 'clamp(36px, 5vw, 56px)',
-            fontWeight: 800,
-            color: '#1a1a1a',
-            lineHeight: 1.05,
-            marginBottom: 40,
-          }}
-        >
-          Logo
-        </h1>
-      </div>
 
       {/* Certified Black brand assets */}
       <section
@@ -157,15 +134,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
           {/* Download ZIP */}
           <div>
             <div className="logo-modal-img-wrap" />
-            <a
-              href="/downloads/Black brand assets - xo market.zip"
-              download
-              className="logo-modal-download"
-              style={{ color: '#1a1a1a' }}
-            >
-              Download ZIP
-            </a>
-            <p className="logo-modal-desc" style={{ color: '#666666' }}>Black brand assets</p>
+            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>Download assets</p>
+            <p className="logo-modal-desc" style={{ color: '#666666' }}>
+              Black brand assets in{' '}
+              <a href="/downloads/black png.zip" download style={{ color: '#666666', fontWeight: 700, textDecoration: 'none' }}>PNG</a>
+              {' '}and{' '}
+              <a href="/downloads/Black svg.zip" download style={{ color: '#666666', fontWeight: 700, textDecoration: 'none' }}>SVG</a>
+            </p>
           </div>
         </div>
       </section>
@@ -238,15 +213,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
           {/* Download ZIP */}
           <div>
             <div className="logo-modal-img-wrap" />
-            <a
-              href="/downloads/White brand assets - xo market.zip"
-              download
-              className="logo-modal-download"
-              style={{ color: '#ffffff' }}
-            >
-              Download ZIP
-            </a>
-            <p className="logo-modal-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>White brand assets</p>
+            <p className="logo-modal-label" style={{ color: '#ffffff' }}>Download assets</p>
+            <p className="logo-modal-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>
+              White brand assets in{' '}
+              <a href="/downloads/white png.zip" download style={{ color: 'rgba(255,255,255,0.55)', fontWeight: 700, textDecoration: 'none' }}>PNG</a>
+              {' '}and{' '}
+              <a href="/downloads/White svg.zip" download style={{ color: 'rgba(255,255,255,0.55)', fontWeight: 700, textDecoration: 'none' }}>SVG</a>
+            </p>
           </div>
         </div>
       </section>
@@ -261,7 +234,10 @@ export default function LogoModal({ onClose }: LogoModalProps) {
           lineHeight: 1.55,
         }}
       >
-        You can download logos individually by rightclicking on the logo and choose copy/download image or download a ZIP file.
+        You can download logos individually by rightclicking on the logo and choose copy/download image or download a ZIP files in{' '}
+        <a href="/downloads/all logos png.zip" download style={{ color: '#888888', fontWeight: 700, textDecoration: 'none' }}>PNG</a>
+        {' '}and{' '}
+        <a href="/downloads/all logos svg.zip" download style={{ color: '#888888', fontWeight: 700, textDecoration: 'none' }}>SVG</a>.
       </p>
     </TileModal>
   )

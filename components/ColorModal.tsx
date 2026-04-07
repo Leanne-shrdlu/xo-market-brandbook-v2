@@ -141,26 +141,13 @@ export default function ColorModal({ onClose }: ColorModalProps) {
   const isMobile = circleSize < 104
 
   return (
-    <TileModal onClose={onClose}>
+    <TileModal onClose={onClose} title="Color">
       <div
         style={{
           padding: isMobile ? '32px 20px 40px' : '48px 72px 56px',
           fontFamily: 'var(--font-rubik)',
         }}
       >
-        {/* Title */}
-        <h1
-          style={{
-            fontSize: 'clamp(36px, 5vw, 56px)',
-            fontWeight: 800,
-            color: '#1a1a1a',
-            textAlign: 'center',
-            lineHeight: 1.05,
-            marginBottom: 48,
-          }}
-        >
-          Color
-        </h1>
 
         {/* Primary colors */}
         <section style={{ marginBottom: 48 }}>

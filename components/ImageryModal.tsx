@@ -107,7 +107,7 @@ function ImageCard({
 
 export default function ImageryModal({ onClose }: ImageryModalProps) {
   return (
-    <TileModal onClose={onClose}>
+    <TileModal onClose={onClose} title="Imagery">
       <style>{`
         .imagery-modal-wrap { padding: 48px 72px 56px; }
         @media (max-width: 600px) {
@@ -143,20 +143,6 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
       `}</style>
 
       <div className="imagery-modal-wrap" style={{ fontFamily: 'var(--font-rubik)' }}>
-        {/* Title */}
-        <h1
-          style={{
-            fontSize: 'clamp(36px, 5vw, 56px)',
-            fontWeight: 800,
-            color: '#1a1a1a',
-            textAlign: 'center',
-            lineHeight: 1.05,
-            marginBottom: 48,
-          }}
-        >
-          Imagery
-        </h1>
-
         {/* Icons */}
         <DownloadSectionHeader
           href="/downloads/icons.zip"

@@ -132,7 +132,7 @@ function FontSection({ name, description, fontVar, weights }: FontSectionProps) 
 
 export default function TypographyModal({ onClose }: TypographyModalProps) {
   return (
-    <TileModal onClose={onClose}>
+    <TileModal onClose={onClose} title="Typography">
       <style>{`
         .typo-halves {
           display: flex;
@@ -157,20 +157,6 @@ export default function TypographyModal({ onClose }: TypographyModalProps) {
         @media (max-width: 600px) { .typo-wrap { padding: 32px 20px 40px; } }
       `}</style>
       <div className="typo-wrap" style={{ fontFamily: 'var(--font-rubik)' }}>
-        {/* Title */}
-        <h1
-          style={{
-            fontSize: 'clamp(36px, 5vw, 56px)',
-            fontWeight: 800,
-            color: '#1a1a1a',
-            textAlign: 'center',
-            lineHeight: 1.05,
-            marginBottom: 48,
-          }}
-        >
-          Typography
-        </h1>
-
         <div className="typo-halves">
           <FontSection
             name="Rubik"

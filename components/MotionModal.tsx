@@ -66,7 +66,7 @@ function MediaCard({ src, alt, download }: { src: string; alt: string; download:
 
 export default function MotionModal({ onClose }: MotionModalProps) {
   return (
-    <TileModal onClose={onClose}>
+    <TileModal onClose={onClose} title="Motion">
       <style>{`
         .motion-modal-wrap { padding: 48px 72px 56px; }
         .motion-grid {
@@ -90,20 +90,6 @@ export default function MotionModal({ onClose }: MotionModalProps) {
       `}</style>
 
       <div className="motion-modal-wrap" style={{ fontFamily: 'var(--font-rubik)' }}>
-        {/* Title */}
-        <h1
-          style={{
-            fontSize: 'clamp(36px, 5vw, 56px)',
-            fontWeight: 800,
-            color: '#1a1a1a',
-            textAlign: 'center',
-            lineHeight: 1.05,
-            marginBottom: 48,
-          }}
-        >
-          Motion
-        </h1>
-
         {/* GIFs */}
         <h2
           style={{

@@ -181,55 +181,40 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
 
         {/* Mascot full */}
         <DownloadSectionHeader
-          href="/brand/Deek_Pose_1.png"
+          href="/downloads/Deek Poses.zip"
           label="Download"
           suffix="Mascot (full)"
         />
         <div className="imagery-mascot-full-grid">
-          <ImageCard
-            src="/brand/Deek_Pose_1.png"
-            alt="Deek mascot pose 1"
-            download="/brand/Deek_Pose_1.png"
-            width={220}
-            height={300}
-          />
-          <ImageCard
-            src="/brand/Deek_Pose_2.png"
-            alt="Deek mascot pose 2"
-            download="/brand/Deek_Pose_2.png"
-            width={220}
-            height={300}
-          />
+          {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43].map((n) => (
+            <ImageCard
+              key={n}
+              src={`/brand/Deek_Pose_${n}.png`}
+              alt={`Deek mascot pose ${n}`}
+              download={`/brand/Deek_Pose_${n}.png`}
+              width={220}
+              height={300}
+            />
+          ))}
         </div>
 
         {/* Mascot head */}
         <DownloadSectionHeader
-          href="/brand/deekface_1.png"
+          href="/downloads/Deek Faces.zip"
           label="Download"
           suffix="Mascot (head)"
         />
         <div className="imagery-mascot-grid">
-          <ImageCard
-            src="/brand/deekface_1.png"
-            alt="Deek face 1"
-            download="/brand/deekface_1.png"
-            width={160}
-            height={160}
-          />
-          <ImageCard
-            src="/brand/deekface_2.png"
-            alt="Deek face 2"
-            download="/brand/deekface_2.png"
-            width={160}
-            height={160}
-          />
-          <ImageCard
-            src="/brand/deekface_3.png"
-            alt="Deek face 3"
-            download="/brand/deekface_3.png"
-            width={160}
-            height={160}
-          />
+          {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25].map((n) => (
+            <ImageCard
+              key={n}
+              src={`/brand/deekface_${n}.png`}
+              alt={`Deek face ${n}`}
+              download={`/brand/deekface_${n}.png`}
+              width={160}
+              height={160}
+            />
+          ))}
         </div>
       </div>
     </TileModal>

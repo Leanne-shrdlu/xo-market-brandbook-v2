@@ -147,41 +147,29 @@ export default function MotionModal({ onClose }: MotionModalProps) {
         {PARTS.map((part) => (
           <div key={part.label} className="motion-part">
 
-            {/* Part heading + download link */}
+            {/* Part label is the download link */}
             <div className="motion-part-header">
-              <span style={{ fontSize: 16, fontWeight: 700, color: '#1a1a1a' }}>
-                {part.label}
-              </span>
               <a
                 href={part.href}
                 download
                 style={{
-                  fontSize: 14,
-                  fontWeight: 400,
-                  color: '#888888',
+                  fontSize: 16,
+                  fontWeight: 700,
+                  color: '#1a1a1a',
                   textDecoration: 'none',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 5,
+                  gap: 7,
                 }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.textDecoration = 'underline')}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.textDecoration = 'none')}
               >
-                <svg width="11" height="14" viewBox="0 0 14 18" fill="none" stroke="#888888" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                {part.label}
+                <svg width="11" height="14" viewBox="0 0 14 18" fill="none" stroke="#1a1a1a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="7" y1="1" x2="7" y2="14"/>
                   <polyline points="1,9 7,15 13,9"/>
                 </svg>
-                Download ZIP
               </a>
-            </div>
-
-            {/* GIF name list */}
-            <div className="motion-gif-list">
-              {part.gifs.map((name) => (
-                <span key={name} style={{ fontSize: 13, color: '#888888', lineHeight: 1.6 }}>
-                  {name}
-                </span>
-              ))}
             </div>
 
             {/* GIF grid */}

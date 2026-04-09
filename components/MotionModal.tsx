@@ -6,81 +6,58 @@ interface MotionModalProps {
   onClose: () => void
 }
 
-const GIFS = [
-  'Deek Agree',
-  'Deek Basketball',
-  'Deek Beach',
-  'Deek Binoculars',
-  'Deek Cooking',
-  'Deek Disagree',
-  'Deek Empty Wallet',
-  'Deek Football',
-  'Deek GM',
-  'Deek GM 3',
-  'Deek GN',
-  'Deek GN 2',
-  'Deek Going Down',
-  'Deek Grass (1)',
-  'Deek Hold',
-  'Deek McDonalds',
-  'Deek Phone call',
-  'Deek Politician',
-  'Deek Swimming in Cash',
-  'Deek Taking Notes',
-  'Deek Trade',
-  'Deek Weekend',
-  'Deek going up',
-  'Deek green chart',
-  'Deek red chart',
-  'Deek rich',
-  'Deek videogames',
-  'Deek_ LFG',
-  'Deek_ This is fine',
-  'deek broke',
-  'deek broke then rich',
-  'deek down then up',
+const PARTS = [
+  {
+    label: 'Part 1',
+    href: '/downloads/XO Market Public Gifs Part 1.zip',
+    gifs: [
+      'Deek Agree',
+      'Deek Beach',
+      'deek broke',
+      'deek broke then rich',
+      'Deek Disagree',
+      'deek down then up',
+      'Deek Empty Wallet',
+      'Deek Going Down',
+      'Deek Swimming in Cash',
+      'Deek Taking Notes',
+    ],
+  },
+  {
+    label: 'Part 2',
+    href: '/downloads/XO Market Public Gifs Part 2.zip',
+    gifs: [
+      'Deek Basketball',
+      'Deek Binoculars',
+      'Deek Cooking',
+      'Deek Football',
+      'Deek GM 3',
+      'Deek going up',
+      'Deek McDonalds',
+      'Deek Phone call',
+      'Deek Politician',
+      'Deek Trade',
+      'Deek videogames',
+    ],
+  },
+  {
+    label: 'Part 3',
+    href: '/downloads/XO Market Public Gifs Part 3.zip',
+    gifs: [
+      'Deek GM',
+      'Deek GN',
+      'Deek GN 2',
+      'Deek Grass (1)',
+      'Deek green chart',
+      'Deek Hold',
+      'Deek red chart',
+      'Deek rich',
+      'Deek Weekend',
+      'Deek_ LFG',
+      'Deek_ This is fine',
+    ],
+  },
 ]
-
-function DownloadSectionHeader({
-  href,
-  label,
-  suffix,
-}: {
-  href: string
-  label: string
-  suffix: string
-}) {
-  return (
-    <div style={{ marginBottom: 20 }}>
-      <a
-        href={href}
-        download
-        style={{
-          fontSize: 18,
-          color: '#1a1a1a',
-          textDecoration: 'none',
-          fontFamily: 'var(--font-rubik)',
-          display: 'inline-flex',
-          alignItems: 'baseline',
-          gap: 6,
-        }}
-        onMouseEnter={(e) => {
-          const el = e.currentTarget.querySelector('.dl-label') as HTMLElement
-          if (el) el.style.textDecoration = 'underline'
-        }}
-        onMouseLeave={(e) => {
-          const el = e.currentTarget.querySelector('.dl-label') as HTMLElement
-          if (el) el.style.textDecoration = 'none'
-        }}
-      >
-        <span className="dl-label" style={{ fontWeight: 700 }}>
-          {label}
-        </span>
-        <span style={{ fontWeight: 400 }}>{suffix}</span>
-      </a>
-    </div>
-  )
-}
 
 function MediaCard({ src, alt, download }: { src: string; alt: string; download: string }) {
   return (
@@ -97,12 +74,7 @@ function MediaCard({ src, alt, download }: { src: string; alt: string; download:
       <img
         src={src}
         alt={alt}
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          display: 'block',
-        }}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
       <a
         href={download}
@@ -137,7 +109,21 @@ export default function MotionModal({ onClose }: MotionModalProps) {
           display: grid;
           grid-template-columns: repeat(6, 1fr);
           gap: 16px;
-          margin-bottom: 36px;
+          margin-bottom: 12px;
+        }
+        .motion-part { margin-bottom: 48px; }
+        .motion-part:last-child { margin-bottom: 0; }
+        .motion-part-header {
+          display: flex;
+          align-items: baseline;
+          gap: 12px;
+          margin-bottom: 12px;
+        }
+        .motion-gif-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px 16px;
+          margin-bottom: 20px;
         }
         @media (max-width: 900px) {
           .motion-grid { grid-template-columns: repeat(4, 1fr); }
@@ -152,21 +138,67 @@ export default function MotionModal({ onClose }: MotionModalProps) {
       `}</style>
 
       <div className="motion-modal-wrap" style={{ fontFamily: 'var(--font-rubik)' }}>
-        <DownloadSectionHeader
-          href="/downloads/XO Market Public Gifs.zip"
-          label="Download"
-          suffix="GIFs"
-        />
-        <div className="motion-grid">
-          {GIFS.map((name) => (
-            <MediaCard
-              key={name}
-              src={`/brand/${name}.gif`}
-              alt={name}
-              download={`/brand/${name}.gif`}
-            />
-          ))}
-        </div>
+
+        {/* Section heading */}
+        <p style={{ fontSize: 18, fontWeight: 700, color: '#1a1a1a', marginBottom: 32 }}>
+          Download
+        </p>
+
+        {PARTS.map((part) => (
+          <div key={part.label} className="motion-part">
+
+            {/* Part heading + download link */}
+            <div className="motion-part-header">
+              <span style={{ fontSize: 16, fontWeight: 700, color: '#1a1a1a' }}>
+                {part.label}
+              </span>
+              <a
+                href={part.href}
+                download
+                style={{
+                  fontSize: 14,
+                  fontWeight: 400,
+                  color: '#888888',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                }}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.textDecoration = 'underline')}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.textDecoration = 'none')}
+              >
+                <svg width="11" height="14" viewBox="0 0 14 18" fill="none" stroke="#888888" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="7" y1="1" x2="7" y2="14"/>
+                  <polyline points="1,9 7,15 13,9"/>
+                </svg>
+                Download ZIP
+              </a>
+            </div>
+
+            {/* GIF name list */}
+            <div className="motion-gif-list">
+              {part.gifs.map((name) => (
+                <span key={name} style={{ fontSize: 13, color: '#888888', lineHeight: 1.6 }}>
+                  {name}
+                </span>
+              ))}
+            </div>
+
+            {/* GIF grid */}
+            <div className="motion-grid">
+              {part.gifs.map((name) => (
+                <MediaCard
+                  key={name}
+                  src={`/brand/${name}.gif`}
+                  alt={name}
+                  download={`/brand/${name}.gif`}
+                />
+              ))}
+            </div>
+
+          </div>
+        ))}
+
       </div>
     </TileModal>
   )

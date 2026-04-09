@@ -7,16 +7,80 @@ interface MotionModalProps {
 }
 
 const GIFS = [
-  { src: '/brand/Deek Agree.gif', alt: 'Deek Agree', download: '/brand/Deek Agree.gif' },
-  { src: '/brand/Deek Basketball.gif', alt: 'Deek Basketball', download: '/brand/Deek Basketball.gif' },
-  { src: '/brand/Deek Beach.gif', alt: 'Deek Beach', download: '/brand/Deek Beach.gif' },
+  'Deek Agree',
+  'Deek Basketball',
+  'Deek Beach',
+  'Deek Binoculars',
+  'Deek Cooking',
+  'Deek Disagree',
+  'Deek Empty Wallet',
+  'Deek Football',
+  'Deek GM',
+  'Deek GM 3',
+  'Deek GN',
+  'Deek GN 2',
+  'Deek Going Down',
+  'Deek Grass (1)',
+  'Deek Hold',
+  'Deek McDonalds',
+  'Deek Phone call',
+  'Deek Politician',
+  'Deek Swimming in Cash',
+  'Deek Taking Notes',
+  'Deek Trade',
+  'Deek Weekend',
+  'Deek going up',
+  'Deek green chart',
+  'Deek red chart',
+  'Deek rich',
+  'Deek videogames',
+  'Deek_ LFG',
+  'Deek_ This is fine',
+  'deek broke',
+  'deek broke then rich',
+  'deek down then up',
 ]
 
-const MOVIES = [
-  { src: '/brand/Deek Weekend.gif', alt: 'Deek Weekend', download: '/brand/Deek Weekend.gif' },
-  { src: '/brand/Deek Agree.gif', alt: 'Deek Agree', download: '/brand/Deek Agree.gif' },
-  { src: '/brand/Deek Basketball.gif', alt: 'Deek Basketball', download: '/brand/Deek Basketball.gif' },
-]
+function DownloadSectionHeader({
+  href,
+  label,
+  suffix,
+}: {
+  href: string
+  label: string
+  suffix: string
+}) {
+  return (
+    <div style={{ marginBottom: 20 }}>
+      <a
+        href={href}
+        download
+        style={{
+          fontSize: 18,
+          color: '#1a1a1a',
+          textDecoration: 'none',
+          fontFamily: 'var(--font-rubik)',
+          display: 'inline-flex',
+          alignItems: 'baseline',
+          gap: 6,
+        }}
+        onMouseEnter={(e) => {
+          const el = e.currentTarget.querySelector('.dl-label') as HTMLElement
+          if (el) el.style.textDecoration = 'underline'
+        }}
+        onMouseLeave={(e) => {
+          const el = e.currentTarget.querySelector('.dl-label') as HTMLElement
+          if (el) el.style.textDecoration = 'none'
+        }}
+      >
+        <span className="dl-label" style={{ fontWeight: 700 }}>
+          {label}
+        </span>
+        <span style={{ fontWeight: 400 }}>{suffix}</span>
+      </a>
+    </div>
+  )
+}
 
 function MediaCard({ src, alt, download }: { src: string; alt: string; download: string }) {
   return (
@@ -71,56 +135,36 @@ export default function MotionModal({ onClose }: MotionModalProps) {
         .motion-modal-wrap { padding: 48px 72px 56px; }
         .motion-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(6, 1fr);
           gap: 16px;
           margin-bottom: 36px;
         }
+        @media (max-width: 900px) {
+          .motion-grid { grid-template-columns: repeat(4, 1fr); }
+        }
         @media (max-width: 600px) {
           .motion-modal-wrap { padding: 32px 20px 40px; }
-          .motion-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-          }
+          .motion-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
         }
-        @media (max-width: 380px) {
-          .motion-grid {
-            grid-template-columns: 1fr;
-          }
+        @media (max-width: 400px) {
+          .motion-grid { grid-template-columns: repeat(2, 1fr); }
         }
       `}</style>
 
       <div className="motion-modal-wrap" style={{ fontFamily: 'var(--font-rubik)' }}>
-        {/* GIFs */}
-        <h2
-          style={{
-            fontSize: 'clamp(17px, 2vw, 20px)',
-            fontWeight: 500,
-            color: '#1a1a1a',
-            marginBottom: 16,
-          }}
-        >
-          GIFs
-        </h2>
+        <DownloadSectionHeader
+          href="/downloads/XO Market Public Gifs.zip"
+          label="Download"
+          suffix="GIFs"
+        />
         <div className="motion-grid">
-          {GIFS.map((g) => (
-            <MediaCard key={g.src} src={g.src} alt={g.alt} download={g.download} />
-          ))}
-        </div>
-
-        {/* Movies */}
-        <h2
-          style={{
-            fontSize: 'clamp(17px, 2vw, 20px)',
-            fontWeight: 500,
-            color: '#1a1a1a',
-            marginBottom: 16,
-          }}
-        >
-          Movies
-        </h2>
-        <div className="motion-grid">
-          {MOVIES.map((m) => (
-            <MediaCard key={m.src + m.alt} src={m.src} alt={m.alt} download={m.download} />
+          {GIFS.map((name) => (
+            <MediaCard
+              key={name}
+              src={`/brand/${name}.gif`}
+              alt={name}
+              download={`/brand/${name}.gif`}
+            />
           ))}
         </div>
       </div>

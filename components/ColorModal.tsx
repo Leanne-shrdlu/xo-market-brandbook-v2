@@ -118,7 +118,7 @@ function OverlapHoverRow({ colors, size = 80 }: { colors: ColorSwatch[]; size?: 
                   pointerEvents: 'none',
                 }}
               >
-                {isCopied ? '✓' : color.hex}
+                {isCopied ? <span style={{ fontSize: 33, lineHeight: 1 }}>✓</span> : color.hex}
               </span>
             )}
           </div>

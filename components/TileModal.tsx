@@ -76,7 +76,7 @@ export default function TileModal({ onClose, children, title }: TileModalProps) 
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '20px 64px',
+            padding: '40px 64px 20px',
             minHeight: '64px',
           }}
         >

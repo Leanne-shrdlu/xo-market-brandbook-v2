@@ -10,7 +10,7 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
   return (
     <TileModal onClose={onClose} title="Voice &amp; Tone">
       <style>{`
-        .voicetone-wrap { padding: 48px 72px 56px; }
+        .voicetone-wrap { padding: 48px 48px 56px; }
         @media (max-width: 600px) { .voicetone-wrap { padding: 32px 20px 40px; } }
       `}</style>
       <div className="voicetone-wrap" style={{ fontFamily: 'var(--font-rubik)' }}>
@@ -42,7 +42,6 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
               color: '#444444',
               lineHeight: 1.65,
               marginBottom: 24,
-              maxWidth: 820,
             }}
           >
             XO Market speaks like a sharp, forward-thinking strategist in the Web3 space — someone
@@ -120,7 +119,6 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
               fontSize: 16,
               color: '#444444',
               lineHeight: 1.65,
-              maxWidth: 820,
             }}
           >
             XO Market&apos;s tone is confident, intelligent, and empowering. It speaks with clarity and

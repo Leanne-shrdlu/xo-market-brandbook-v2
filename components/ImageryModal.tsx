@@ -122,22 +122,38 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
         }
         .imagery-mascot-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(6, 1fr);
           gap: 16px;
           margin-bottom: 36px;
         }
         .imagery-mascot-full-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(6, 1fr);
           gap: 16px;
           margin-bottom: 36px;
         }
+        @media (max-width: 900px) {
+          .imagery-mascot-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+          .imagery-mascot-full-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
         @media (max-width: 640px) {
+          .imagery-mascot-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          .imagery-mascot-full-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
+        @media (max-width: 400px) {
           .imagery-mascot-grid {
             grid-template-columns: repeat(2, 1fr);
           }
           .imagery-mascot-full-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
           }
         }
       `}</style>

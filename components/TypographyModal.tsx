@@ -134,27 +134,15 @@ export default function TypographyModal({ onClose }: TypographyModalProps) {
   return (
     <TileModal onClose={onClose} title="Typography">
       <style>{`
-        .typo-halves {
-          display: flex;
-          gap: 48px;
-          align-items: start;
-        }
-        .typo-pink-line {
-          border: none;
-          border-top: 1px solid #ff87a6;
-          margin: 32px 0 0;
-        }
-        @media (max-width: 640px) {
-          .typo-halves {
-            flex-direction: column;
-            gap: 40px;
-          }
-        }
-      `}</style>
-
-      <style>{`
         .typo-wrap { padding: 48px 72px 52px; }
-        @media (max-width: 600px) { .typo-wrap { padding: 32px 20px 40px; } }
+        .typo-halves { display: flex; gap: 48px; align-items: start; }
+        .typo-pink-line { border: none; border-top: 1px solid #ff87a6; margin: 32px 0 0; }
+        @media (max-width: 640px) {
+          .typo-halves { flex-direction: column; gap: 40px; }
+        }
+        @media (max-width: 600px) {
+          .typo-wrap { padding: 32px 20px 40px; }
+        }
       `}</style>
       <div className="typo-wrap" style={{ fontFamily: 'var(--font-rubik)' }}>
         <div className="typo-halves">

@@ -119,12 +119,6 @@ export default function MotionModal({ onClose }: MotionModalProps) {
           gap: 12px;
           margin-bottom: 12px;
         }
-        .motion-gif-list {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 4px 16px;
-          margin-bottom: 20px;
-        }
         @media (max-width: 900px) {
           .motion-grid { grid-template-columns: repeat(4, 1fr); }
         }

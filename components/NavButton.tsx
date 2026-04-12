@@ -4,18 +4,12 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 interface NavButtonProps {
-  buttonState: number
   scrollProgress: number
   easedProgress: number
   loaded: boolean
 }
 
-export default function NavButton({
-  buttonState,
-  scrollProgress,
-  easedProgress,
-  loaded,
-}: NavButtonProps) {
+export default function NavButton({ scrollProgress, easedProgress, loaded }: NavButtonProps) {
   const [logoDrawn, setLogoDrawn] = useState(false)
 
   useEffect(() => {
@@ -25,30 +19,25 @@ export default function NavButton({
     }
   }, [loaded])
 
-  // Compute circle size based on scroll progress
+  // Circle size shrinks across two scroll phases then locks at 90px
   let size: number
   if (scrollProgress <= 0.05) {
-    const t = scrollProgress / 0.05
-    size = 800 - t * 300
+    size = 800 - (scrollProgress / 0.05) * 300
   } else if (scrollProgress <= 0.12) {
-    const t = (scrollProgress - 0.05) / 0.07
-    size = 500 - t * 410
+    size = 500 - ((scrollProgress - 0.05) / 0.07) * 410
   } else {
     size = 90
   }
   size = Math.max(90, Math.round(size))
 
-  // Scroll-linked shrink: tiles are visually settled around easedProgress ~0.92+.
-  // The circle shrinks from full (scale=1) to zero over the final scroll range.
-  // Using easedProgress means: scroll up → eased goes down → circle grows back. Fully reversible.
+  // Circle scales to zero at the very end of scroll, fully reversible
   const SHRINK_START = 0.99
   const SHRINK_END   = 1.00
-  const shrinkT     = Math.min(1, Math.max(0, (easedProgress - SHRINK_START) / (SHRINK_END - SHRINK_START)))
-  const circleScale = 1 - shrinkT
+  const shrinkT      = Math.min(1, Math.max(0, (easedProgress - SHRINK_START) / (SHRINK_END - SHRINK_START)))
+  const circleScale  = 1 - shrinkT
 
-  const showText1 = scrollProgress < 0.04
-  const showText2 = scrollProgress >= 0.04 && scrollProgress <= 0.14
-  const showLogo  = scrollProgress > 0.14
+  const showContent = scrollProgress < 0.04
+  const showLogo    = scrollProgress > 0.14
 
   const isSmall = scrollProgress > 0.12
   const isBlue  = scrollProgress > 0.025
@@ -65,7 +54,6 @@ export default function NavButton({
         left: '50%',
         transform: `translate(-50%, -50%) scale(${circleScale})`,
         transformOrigin: 'center center',
-        opacity: 1,
         zIndex: 50,
         pointerEvents: 'none',
         transition: 'transform 0.6s cubic-bezier(0.4,0,0.2,1)',
@@ -75,11 +63,11 @@ export default function NavButton({
         style={{
           width: size,
           height: size,
-          borderRadius: borderRadius,
+          borderRadius,
           background: bgColor,
-          boxShadow: !isBlue
-            ? '0 0 0 1px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.1)'
-            : '0 4px 32px rgba(168,110,245,0.35)',
+          boxShadow: isBlue
+            ? '0 4px 32px rgba(168,110,245,0.35)'
+            : '0 0 0 1px rgba(0,0,0,0.06), 0 4px 24px rgba(0,0,0,0.1)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -94,7 +82,7 @@ export default function NavButton({
           ].join(', '),
         }}
       >
-        {/* State 1: large white — XO Market logo + tagline */}
+        {/* State 1: large white circle — logo + tagline */}
         <div
           style={{
             position: 'absolute',
@@ -105,8 +93,8 @@ export default function NavButton({
             justifyContent: 'center',
             padding: Math.min(56, size * 0.07),
             gap: 28,
-            opacity: showText1 ? 1 : 0,
-            transform: showText1 ? 'scale(1)' : 'scale(0.96)',
+            opacity: showContent ? 1 : 0,
+            transform: showContent ? 'scale(1)' : 'scale(0.96)',
             transition: 'opacity 0.3s ease, transform 0.3s ease',
             pointerEvents: 'none',
           }}
@@ -128,24 +116,7 @@ export default function NavButton({
           </p>
         </div>
 
-        {/* State 2: gradient medium — description text */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: Math.min(48, size * 0.09),
-            opacity: showText2 ? 1 : 0,
-            transform: showText2 ? 'scale(1)' : 'scale(0.96)',
-            transition: 'opacity 0.3s ease, transform 0.3s ease',
-            pointerEvents: 'none',
-          }}
-        >
-        </div>
-
-        {/* State 3: small circle — XO Market logomark */}
+        {/* State 3: small circle — logomark only */}
         <div
           style={{
             position: 'absolute',
@@ -180,7 +151,9 @@ function LogoMark({ drawn, size }: { drawn: boolean; size: number }) {
       style={{
         opacity: drawn ? 1 : 0,
         transform: drawn ? 'scale(1)' : 'scale(0.88)',
-        transition: drawn ? 'opacity 0.6s ease 0.1s, transform 0.6s cubic-bezier(0.4,0,0.2,1) 0.1s' : 'none',
+        transition: drawn
+          ? 'opacity 0.6s ease 0.1s, transform 0.6s cubic-bezier(0.4,0,0.2,1) 0.1s'
+          : 'none',
       }}
     >
       <Image

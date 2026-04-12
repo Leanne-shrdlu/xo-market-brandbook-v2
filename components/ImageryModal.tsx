@@ -126,35 +126,14 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
           gap: 16px;
           margin-bottom: 36px;
         }
-        .imagery-mascot-full-grid {
-          display: grid;
-          grid-template-columns: repeat(6, 1fr);
-          gap: 16px;
-          margin-bottom: 36px;
-        }
         @media (max-width: 900px) {
-          .imagery-mascot-grid {
-            grid-template-columns: repeat(4, 1fr);
-          }
-          .imagery-mascot-full-grid {
-            grid-template-columns: repeat(4, 1fr);
-          }
+          .imagery-mascot-grid { grid-template-columns: repeat(4, 1fr); }
         }
         @media (max-width: 640px) {
-          .imagery-mascot-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-          .imagery-mascot-full-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
+          .imagery-mascot-grid { grid-template-columns: repeat(3, 1fr); }
         }
         @media (max-width: 400px) {
-          .imagery-mascot-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          .imagery-mascot-full-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+          .imagery-mascot-grid { grid-template-columns: repeat(2, 1fr); }
         }
       `}</style>
 
@@ -201,8 +180,8 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
           label="Download"
           suffix="Mascot (full)"
         />
-        <div className="imagery-mascot-full-grid">
-          {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43].map((n) => (
+        <div className="imagery-mascot-grid">
+          {Array.from({ length: 43 }, (_, i) => i + 1).map((n) => (
             <ImageCard
               key={n}
               src={`/brand/Deek_Pose_${n}.png`}
@@ -221,7 +200,7 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
           suffix="Mascot (head)"
         />
         <div className="imagery-mascot-grid">
-          {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25].map((n) => (
+          {Array.from({ length: 25 }, (_, i) => i + 1).map((n) => (
             <ImageCard
               key={n}
               src={`/brand/deekface_${n}.png`}

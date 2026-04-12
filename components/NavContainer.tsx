@@ -116,10 +116,6 @@ export default function NavContainer() {
     }
   }, [])
 
-  let buttonState = 1
-  if (scrollProgress > 0.05 && scrollProgress <= 0.12) buttonState = 2
-  if (scrollProgress > 0.12) buttonState = 3
-
   const tileProgress = easedProgress
   const gridLineOpacity = Math.min(1, Math.max(0, (tileProgress - 0.7) / 0.3))
 
@@ -178,7 +174,6 @@ export default function NavContainer() {
 
       {/* Central NavButton */}
       <NavButton
-        buttonState={buttonState}
         scrollProgress={scrollProgress}
         easedProgress={easedProgress}
         loaded={loaded}

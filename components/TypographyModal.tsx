@@ -75,7 +75,7 @@ function FontSection({ name, description, fontVar, weights }: FontSectionProps) 
           gridRow: 1,
           gridColumn: 1,
           paddingRight: 4,
-          alignSelf: 'center',
+          alignSelf: 'start',
         }}
       >
         Typeface
@@ -116,7 +116,7 @@ function FontSection({ name, description, fontVar, weights }: FontSectionProps) 
               fontFamily: fontVar,
               fontWeight: w.weight,
               fontStyle: w.style,
-              fontSize: 14,
+              fontSize: 17,
               color: '#1a1a1a',
               lineHeight: 1.55,
             }}

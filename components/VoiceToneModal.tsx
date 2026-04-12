@@ -76,12 +76,12 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
 
           {/* Do */}
           <div>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: '#1a1a1a', marginBottom: 16, letterSpacing: '0.01em' }}>
+            <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>
               Do
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DO_ITEMS.map((item) => (
-                <li key={item} style={{ fontSize: 15, color: '#444444', lineHeight: 1.6, paddingLeft: 18, position: 'relative' }}>
+                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.6, paddingLeft: 18, position: 'relative' }}>
                   <span style={{ position: 'absolute', left: 0, top: '0.6em', width: 5, height: 5, borderRadius: '50%', background: '#1a1a1a', display: 'inline-block' }} />
                   {item}
                 </li>
@@ -91,12 +91,12 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
 
           {/* Don't */}
           <div>
-            <h3 style={{ fontSize: 16, fontWeight: 700, color: '#1a1a1a', marginBottom: 16, letterSpacing: '0.01em' }}>
+            <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>
               Don&apos;t
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DONT_ITEMS.map((item) => (
-                <li key={item} style={{ fontSize: 15, color: '#444444', lineHeight: 1.6, paddingLeft: 18, position: 'relative' }}>
+                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.6, paddingLeft: 18, position: 'relative' }}>
                   <span style={{ position: 'absolute', left: 0, top: '0.6em', width: 5, height: 5, borderRadius: '50%', background: '#1a1a1a', display: 'inline-block' }} />
                   {item}
                 </li>
@@ -117,14 +117,14 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             {EXAMPLES.map(({ context, bad, good }) => (
               <div key={context}>
-                <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', marginBottom: 8 }}>
+                <p style={{ fontSize: 16, fontWeight: 700, color: '#1a1a1a', marginBottom: 8 }}>
                   {context}
                 </p>
-                <p style={{ fontSize: 15, color: '#888888', lineHeight: 1.45, marginBottom: 6 }}>
+                <p style={{ fontSize: 16, color: '#888888', lineHeight: 1.45, marginBottom: 6 }}>
                   <span style={{ fontWeight: 600, color: '#ff87a6' }}>Not this:</span>{' '}
                   &ldquo;{bad}&rdquo;
                 </p>
-                <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.45 }}>
+                <p style={{ fontSize: 16, color: '#444444', lineHeight: 1.45 }}>
                   <span style={{ fontWeight: 600, color: '#1a1a1a' }}>This:</span>{' '}
                   &ldquo;{good}&rdquo;
                 </p>

@@ -79,9 +79,9 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
             <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>
               Do
             </h3>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 21 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DO_ITEMS.map((item) => (
-                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.2, paddingLeft: 18, position: 'relative' }}>
+                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.1, paddingLeft: 18, position: 'relative' }}>
                   <span style={{ position: 'absolute', left: 0, top: '0.6em', width: 5, height: 5, borderRadius: '50%', background: '#1a1a1a', display: 'inline-block' }} />
                   {item}
                 </li>
@@ -94,9 +94,9 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
             <h3 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>
               Don&apos;t
             </h3>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 21 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DONT_ITEMS.map((item) => (
-                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.2, paddingLeft: 18, position: 'relative' }}>
+                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.1, paddingLeft: 18, position: 'relative' }}>
                   <span style={{ position: 'absolute', left: 0, top: '0.6em', width: 5, height: 5, borderRadius: '50%', background: '#1a1a1a', display: 'inline-block' }} />
                   {item}
                 </li>

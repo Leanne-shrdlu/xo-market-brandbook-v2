@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import TileModal from './TileModal'
 
 interface ImageryModalProps {
@@ -52,14 +51,10 @@ function ImageCard({
   src,
   alt,
   download: downloadHref,
-  width,
-  height,
 }: {
   src: string
   alt: string
   download: string
-  width: number
-  height: number
 }) {
   return (
     <div
@@ -74,13 +69,11 @@ function ImageCard({
         padding: 16,
       }}
     >
-      <Image
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={src}
         alt={alt}
-        width={width}
-        height={height}
-        unoptimized
-        style={{ objectFit: 'contain', maxWidth: '100%', height: 'auto', display: 'block' }}
+        style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
       />
       <a
         href={downloadHref}
@@ -187,8 +180,6 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
               src={`/brand/Deek_Pose_${n}.png`}
               alt={`Deek mascot pose ${n}`}
               download={`/brand/Deek_Pose_${n}.png`}
-              width={220}
-              height={300}
             />
           ))}
         </div>
@@ -206,8 +197,6 @@ export default function ImageryModal({ onClose }: ImageryModalProps) {
               src={`/brand/deekface_${n}.png`}
               alt={`Deek face ${n}`}
               download={`/brand/deekface_${n}.png`}
-              width={160}
-              height={160}
             />
           ))}
         </div>

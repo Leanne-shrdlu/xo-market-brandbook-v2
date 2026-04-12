@@ -31,7 +31,7 @@ interface TileConfig {
 const TILES: TileConfig[] = [
   {
     id: 'voice-tone',
-    label: 'Voice & Tone',
+    label: 'Brand Voice',
     color: '#ff9500',
     textColor: '#3d1a00',
     offsetX: -0.1,

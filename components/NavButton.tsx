@@ -143,22 +143,6 @@ export default function NavButton({
             pointerEvents: 'none',
           }}
         >
-          <p
-            style={{
-              fontSize: Math.max(13, Math.min(18, size * 0.034)),
-              fontWeight: 400,
-              lineHeight: 1.58,
-              textAlign: 'center',
-              color: '#ffffff',
-              maxWidth: 360,
-              fontFamily: 'var(--font-rubik)',
-              margin: 0,
-            }}
-          >
-            Icons. Illustrations. Logos. Language.
-            <br />
-            This collection captures the essence of XO Market — its look, feel, and voice.
-          </p>
         </div>
 
         {/* State 3: small circle — XO Market logomark */}

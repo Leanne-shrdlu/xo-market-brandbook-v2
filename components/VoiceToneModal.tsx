@@ -107,24 +107,24 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
         </div>
 
         {/* Pink divider */}
-        <hr style={{ border: 'none', borderTop: '4px solid #ff87a6', margin: '0 0 48px' }} />
+        <hr style={{ border: 'none', borderTop: '1px solid #ff87a6', margin: '0 0 48px' }} />
 
         {/* Examples */}
         <section>
           <h2 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#1a1a1a', marginBottom: 32 }}>
             Examples
           </h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             {EXAMPLES.map(({ context, bad, good }) => (
               <div key={context}>
-                <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', marginBottom: 12 }}>
+                <p style={{ fontSize: 15, fontWeight: 700, color: '#1a1a1a', marginBottom: 8 }}>
                   {context}
                 </p>
-                <p style={{ fontSize: 15, color: '#888888', lineHeight: 1.6, marginBottom: 8 }}>
-                  <span style={{ fontWeight: 600, color: '#cc4444' }}>Not this:</span>{' '}
+                <p style={{ fontSize: 15, color: '#888888', lineHeight: 1.45, marginBottom: 6 }}>
+                  <span style={{ fontWeight: 600, color: '#ff87a6' }}>Not this:</span>{' '}
                   &ldquo;{bad}&rdquo;
                 </p>
-                <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.6 }}>
+                <p style={{ fontSize: 15, color: '#444444', lineHeight: 1.45 }}>
                   <span style={{ fontWeight: 600, color: '#1a1a1a' }}>This:</span>{' '}
                   &ldquo;{good}&rdquo;
                 </p>

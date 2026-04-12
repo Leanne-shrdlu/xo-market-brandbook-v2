@@ -124,9 +124,7 @@ export default function NavButton({
               margin: 0,
             }}
           >
-            Turn your beliefs into tradable assets.
-            <br />
-            Watch the crowd price them in real time.
+            Icons. Illustrations. Logos. Language. This collection captures the essence of XO Market — its look, feel, and voice.
           </p>
         </div>
 

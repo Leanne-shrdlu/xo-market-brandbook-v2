@@ -46,10 +46,14 @@ body {
   font-family: var(--font-family);
   background: #ffffff;
   color: var(--text--base);
-  /* 400vh scroll height for the brand animation on the home page */
-  height: 400vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Shared descriptive body text across all popups */
+.popup-desc {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 svg {

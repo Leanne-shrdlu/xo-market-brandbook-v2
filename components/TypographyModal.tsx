@@ -86,7 +86,7 @@ function FontSection({ name, description, fontVar, weights }: FontSectionProps) 
         <p style={{ fontSize: 15, fontWeight: 600, color: '#1a1a1a', marginBottom: 3 }}>
           {name}
         </p>
-        <p style={{ fontSize: 13, color: '#888', lineHeight: 1.4 }}>{description}</p>
+        <p className="popup-desc" style={{ color: '#888' }}>{description}</p>
       </div>
 
       {/* Row 2 col 1 — large "Font" */}

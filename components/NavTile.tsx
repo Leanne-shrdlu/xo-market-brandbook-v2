@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import type { ComponentType } from 'react'
 
 interface NavTileProps {
@@ -8,8 +7,6 @@ interface NavTileProps {
   label: string
   color: string
   textColor: string
-  transform: string
-  progress: number
   TileComponent: ComponentType<{ hovered: boolean }>
   onOpenModal?: () => void
 }
@@ -19,15 +16,9 @@ export default function NavTile({
   label,
   color,
   textColor,
-  transform,
-  progress,
   TileComponent,
   onOpenModal,
 }: NavTileProps) {
-  const [hovered, setHovered] = useState(false)
-
-  const isVisible = progress > 0.08
-
   return (
     <>
     <style>{`
@@ -40,22 +31,15 @@ export default function NavTile({
     `}</style>
     <div
       data-tile-id={id}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       onClick={onOpenModal}
       style={{
         position: 'relative',
-        background: hovered ? '#1a1a1a' : color,
-        color: hovered ? '#ffffff' : textColor,
+        width: '100%',
+        height: '100%',
+        background: color,
+        color: textColor,
         overflow: 'hidden',
         cursor: 'pointer',
-        transform: transform,
-        transformOrigin: 'center center',
-        transition: [
-          'background 0.38s cubic-bezier(0.4,0,0.2,1)',
-          'color 0.38s cubic-bezier(0.4,0,0.2,1)',
-        ].join(', '),
-        willChange: 'transform',
       }}
     >
       <div
@@ -65,8 +49,7 @@ export default function NavTile({
           left: 0,
           width: '100%',
           height: '100%',
-          opacity: isVisible ? 1 : 0,
-          transition: 'opacity 0.55s ease',
+          pointerEvents: 'none',
         }}
       >
         {/* Illustration / visual area */}
@@ -80,7 +63,7 @@ export default function NavTile({
             pointerEvents: 'none',
           }}
         >
-          <TileComponent hovered={hovered} />
+          <TileComponent hovered={false} />
         </div>
 
         {/* Bottom label bar */}
@@ -93,7 +76,6 @@ export default function NavTile({
             right: 0,
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between',
             zIndex: 5,
           }}
         >
@@ -110,26 +92,6 @@ export default function NavTile({
           >
             {label}
           </span>
-
-          {/* Arrow icon — appears on hover */}
-          <svg
-            viewBox="0 0 16 16"
-            style={{
-              width: 16,
-              height: 16,
-              opacity: hovered ? 1 : 0,
-              transform: hovered ? 'translate(0,0)' : 'translate(-4px, 4px)',
-              transition: 'opacity 0.3s ease, transform 0.3s ease',
-              flexShrink: 0,
-            }}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M3 13L13 3M13 3H6M13 3V10" />
-          </svg>
         </div>
       </div>
     </div>

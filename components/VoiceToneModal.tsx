@@ -114,8 +114,11 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
           <h2 style={{ fontSize: 'clamp(20px, 2.5vw, 26px)', fontWeight: 700, color: '#1a1a1a', marginBottom: 16 }}>
             Brand Voice
           </h2>
-          <p style={{ fontSize: 16, color: '#444444', lineHeight: 1.7 }}>
-            Confident, direct, informed. Confident means we don&apos;t hedge or over-qualify. Direct means we get to the point without preamble. Informed means we use real data and specifics, not vague claims. Natural means we write the way people actually talk, not the way brands typically post.
+          <p className="popup-desc" style={{ color: '#444444', lineHeight: 1.7 }}>
+            Confident, direct, informed. Confident means we don&apos;t hedge or over-qualify. Direct means we get to the point without preamble. Informed means we use real data and specifics, not vague claims.
+          </p>
+          <p className="popup-desc" style={{ color: '#444444', lineHeight: 1.7 }}>
+            Natural means we write the way people actually talk, not the way brands typically post.
           </p>
         </section>
 
@@ -129,7 +132,7 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DO_ITEMS.map((item) => (
-                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.5, paddingLeft: 18, position: 'relative' }}>
+                <li key={item} className="popup-desc" style={{ color: '#444444', paddingLeft: 18, position: 'relative' }}>
                   <span style={{ position: 'absolute', left: 0, top: '0.45em', width: 5, height: 5, borderRadius: '50%', background: '#1a1a1a', display: 'inline-block' }} />
                   {item}
                 </li>
@@ -144,7 +147,7 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
             </h3>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {DONT_ITEMS.map((item) => (
-                <li key={item} style={{ fontSize: 16, color: '#444444', lineHeight: 1.5, paddingLeft: 18, position: 'relative' }}>
+                <li key={item} className="popup-desc" style={{ color: '#444444', paddingLeft: 18, position: 'relative' }}>
                   <span style={{ position: 'absolute', left: 0, top: '0.45em', width: 5, height: 5, borderRadius: '50%', background: '#1a1a1a', display: 'inline-block' }} />
                   {item}
                 </li>
@@ -165,14 +168,14 @@ export default function VoiceToneModal({ onClose }: VoiceToneModalProps) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
             {EXAMPLES.map(({ context, bad, good }) => (
               <div key={context}>
-                <p style={{ fontSize: 16, fontWeight: 700, color: '#1a1a1a', marginBottom: 8 }}>
+                <p className="popup-desc" style={{ fontWeight: 700, color: '#1a1a1a', marginBottom: 8 }}>
                   {context}
                 </p>
-                <p style={{ fontSize: 16, color: '#888888', lineHeight: 1.45, marginBottom: 6 }}>
+                <p className="popup-desc" style={{ color: '#888888', lineHeight: 1.45, marginBottom: 6 }}>
                   <span style={{ fontWeight: 600, color: '#ff87a6' }}>Not this:</span>{' '}
                   &ldquo;{bad}&rdquo;
                 </p>
-                <p style={{ fontSize: 16, color: '#444444', lineHeight: 1.45 }}>
+                <p className="popup-desc" style={{ color: '#444444', lineHeight: 1.45 }}>
                   <span style={{ fontWeight: 600, color: '#1a1a1a' }}>This:</span>{' '}
                   &ldquo;{good}&rdquo;
                 </p>

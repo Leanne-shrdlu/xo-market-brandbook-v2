@@ -13,7 +13,7 @@ export default function LogoModal({ onClose }: LogoModalProps) {
       <style>{`
         .logo-modal-grid {
           display: grid;
-          grid-template-columns: 1.4fr 1.6fr 1fr 1fr;
+          grid-template-columns: 1.4fr 1.6fr 1fr;
           gap: 32px;
           align-items: start;
         }
@@ -44,6 +44,10 @@ export default function LogoModal({ onClose }: LogoModalProps) {
         .logo-modal-download:hover {
           text-decoration: underline;
         }
+        .logo-dl-link { color: #1a1a1a; font-weight: 700; text-decoration: none; }
+        .logo-dl-link:hover { text-decoration: underline; }
+        .logo-dl-link-inv { color: #ffffff; font-weight: 700; text-decoration: none; }
+        .logo-dl-link-inv:hover { text-decoration: underline; }
         @media (max-width: 640px) {
           .logo-modal-grid {
             grid-template-columns: 1fr 1fr;
@@ -95,8 +99,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
                 style={{ objectFit: 'contain', objectPosition: 'left center', maxWidth: '100%' }}
               />
             </div>
-            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>Lockup</p>
-            <p className="logo-modal-desc" style={{ color: '#666666' }}>Default Brand representation</p>
+            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>
+              Download Lockup in{' '}
+              <a href="/brand/XO Market Logo Coloured.png" download className="logo-dl-link">PNG</a>
+              {' / '}
+              <a href="/brand/XO Market Logo Coloured.svg" download className="logo-dl-link">SVG</a>
+            </p>
+            <p className="logo-modal-desc popup-desc" style={{ color: '#666666' }}>Default Brand representation</p>
           </div>
 
           {/* Wordmark */}
@@ -111,8 +120,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
                 style={{ objectFit: 'contain', objectPosition: 'left center', maxWidth: '100%' }}
               />
             </div>
-            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>Wordmark</p>
-            <p className="logo-modal-desc" style={{ color: '#666666' }}>Used in places where logo is already in present</p>
+            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>
+              Download Wordmark in{' '}
+              <a href="/brand/XO Market Wordmark Coloured.png" download className="logo-dl-link">PNG</a>
+              {' / '}
+              <a href="/brand/XO Market Wordmark Coloured.svg" download className="logo-dl-link">SVG</a>
+            </p>
+            <p className="logo-modal-desc popup-desc" style={{ color: '#666666' }}>Used in places where logo is already in present</p>
           </div>
 
           {/* Logomark */}
@@ -127,20 +141,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
                 style={{ objectFit: 'contain', objectPosition: 'left center' }}
               />
             </div>
-            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>Logomark</p>
-            <p className="logo-modal-desc" style={{ color: '#666666' }}>Used for profile pictures</p>
-          </div>
-
-          {/* Download ZIP */}
-          <div>
-            <div className="logo-modal-img-wrap" />
-            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>Download assets</p>
-            <p className="logo-modal-desc" style={{ color: '#666666' }}>
-              Black brand assets in{' '}
-              <a href="/downloads/black png.zip" download style={{ color: '#666666', fontWeight: 700, textDecoration: 'none' }}>PNG</a>
-              {' '}and{' '}
-              <a href="/downloads/Black svg.zip" download style={{ color: '#666666', fontWeight: 700, textDecoration: 'none' }}>SVG</a>
+            <p className="logo-modal-label" style={{ color: '#1a1a1a' }}>
+              Download Logomark in{' '}
+              <a href="/brand/XO Market Logomark Coloured.png" download className="logo-dl-link">PNG</a>
+              {' / '}
+              <a href="/brand/XO Market Logomark Coloured.svg" download className="logo-dl-link">SVG</a>
             </p>
+            <p className="logo-modal-desc popup-desc" style={{ color: '#666666' }}>Used for profile pictures</p>
           </div>
         </div>
       </section>
@@ -174,8 +181,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
                 style={{ objectFit: 'contain', objectPosition: 'left center', maxWidth: '100%' }}
               />
             </div>
-            <p className="logo-modal-label" style={{ color: '#ffffff' }}>Lockup</p>
-            <p className="logo-modal-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>Default Brand representation</p>
+            <p className="logo-modal-label" style={{ color: '#ffffff' }}>
+              Download Lockup in{' '}
+              <a href="/brand/XO Market Logo White.png" download className="logo-dl-link-inv">PNG</a>
+              {' / '}
+              <a href="/brand/XO Market Logo White.svg" download className="logo-dl-link-inv">SVG</a>
+            </p>
+            <p className="logo-modal-desc popup-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>Default Brand representation</p>
           </div>
 
           {/* Wordmark */}
@@ -190,8 +202,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
                 style={{ objectFit: 'contain', objectPosition: 'left center', maxWidth: '100%' }}
               />
             </div>
-            <p className="logo-modal-label" style={{ color: '#ffffff' }}>Wordmark</p>
-            <p className="logo-modal-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>Used in places where logo is already in present</p>
+            <p className="logo-modal-label" style={{ color: '#ffffff' }}>
+              Download Wordmark in{' '}
+              <a href="/brand/XO Market Wordmark White.png" download className="logo-dl-link-inv">PNG</a>
+              {' / '}
+              <a href="/brand/XO Market Wordmark White.svg" download className="logo-dl-link-inv">SVG</a>
+            </p>
+            <p className="logo-modal-desc popup-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>Used in places where logo is already in present</p>
           </div>
 
           {/* Logomark */}
@@ -206,20 +223,13 @@ export default function LogoModal({ onClose }: LogoModalProps) {
                 style={{ objectFit: 'contain', objectPosition: 'left center' }}
               />
             </div>
-            <p className="logo-modal-label" style={{ color: '#ffffff' }}>Logomark</p>
-            <p className="logo-modal-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>Used for profile pictures</p>
-          </div>
-
-          {/* Download ZIP */}
-          <div>
-            <div className="logo-modal-img-wrap" />
-            <p className="logo-modal-label" style={{ color: '#ffffff' }}>Download assets</p>
-            <p className="logo-modal-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>
-              White brand assets in{' '}
-              <a href="/downloads/white png.zip" download style={{ color: 'rgba(255,255,255,0.55)', fontWeight: 700, textDecoration: 'none' }}>PNG</a>
-              {' '}and{' '}
-              <a href="/downloads/White svg.zip" download style={{ color: 'rgba(255,255,255,0.55)', fontWeight: 700, textDecoration: 'none' }}>SVG</a>
+            <p className="logo-modal-label" style={{ color: '#ffffff' }}>
+              Download Logomark in{' '}
+              <a href="/brand/XO Market Logomark Dark.png" download className="logo-dl-link-inv">PNG</a>
+              {' / '}
+              <a href="/brand/XO Market Logomark Dark.svg" download className="logo-dl-link-inv">SVG</a>
             </p>
+            <p className="logo-modal-desc popup-desc" style={{ color: 'rgba(255,255,255,0.55)' }}>Used for profile pictures</p>
           </div>
         </div>
       </section>
@@ -234,9 +244,9 @@ export default function LogoModal({ onClose }: LogoModalProps) {
           lineHeight: 1.55,
         }}
       >
-        You can download logos individually by rightclicking on the logo and choose copy/download image or download a ZIP files in{' '}
+        Download Logos in a ZIP files{' '}
         <a href="/downloads/all logos png.zip" download style={{ color: '#888888', fontWeight: 700, textDecoration: 'none' }}>PNG</a>
-        {' '}and{' '}
+        {' / '}
         <a href="/downloads/all logos svg.zip" download style={{ color: '#888888', fontWeight: 700, textDecoration: 'none' }}>SVG</a>.
       </p>
     </TileModal>

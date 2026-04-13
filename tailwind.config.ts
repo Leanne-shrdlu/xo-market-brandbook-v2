@@ -20,7 +20,7 @@ const config: Config = {
         'dbx-dark': '#1a1a1a',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        sans: ['var(--font-rubik)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         mono: ['var(--font-mono)', 'Courier New', 'monospace'],
       },
     },

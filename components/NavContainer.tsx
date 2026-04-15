@@ -2,14 +2,12 @@
 
 import { useState } from 'react'
 import NavTile from './NavTile'
-import VoiceToneTile from './tiles/VoiceToneTile'
 import LogoTile from './tiles/LogoTile'
 import TypographyTile from './tiles/TypographyTile'
 import ColorTile from './tiles/ColorTile'
 import ImageryTile from './tiles/ImageryTile'
 import MotionTile from './tiles/MotionTile'
 import LogoModal from './LogoModal'
-import VoiceToneModal from './VoiceToneModal'
 import TypographyModal from './TypographyModal'
 import ColorModal from './ColorModal'
 import ImageryModal from './ImageryModal'
@@ -22,15 +20,19 @@ interface TileConfig {
   color: string
   textColor: string
   component: ComponentType<{ hovered: boolean }>
+  gridColumn: string
 }
 
+// Top row: 3 equal tiles (each spans 2 of 6 cols)
+// Bottom row: 2 half-width tiles (each spans 3 of 6 cols)
 const TILES: TileConfig[] = [
   {
-    id: 'voice-tone',
-    label: 'Brand Voice',
-    color: '#ff9500',
-    textColor: '#3d1a00',
-    component: VoiceToneTile,
+    id: 'typography',
+    label: 'Typography',
+    color: '#ffffff',
+    textColor: '#000000',
+    component: TypographyTile,
+    gridColumn: 'span 2',
   },
   {
     id: 'logo',
@@ -38,13 +40,7 @@ const TILES: TileConfig[] = [
     color: '#18daeb',
     textColor: '#003d4d',
     component: LogoTile,
-  },
-  {
-    id: 'typography',
-    label: 'Typography',
-    color: '#ffffff',
-    textColor: '#000000',
-    component: TypographyTile,
+    gridColumn: 'span 2',
   },
   {
     id: 'color',
@@ -52,6 +48,7 @@ const TILES: TileConfig[] = [
     color: '#d0fa49',
     textColor: '#1a2600',
     component: ColorTile,
+    gridColumn: 'span 2',
   },
   {
     id: 'imagery',
@@ -59,6 +56,7 @@ const TILES: TileConfig[] = [
     color: '#ff87a6',
     textColor: '#1a1a1a',
     component: ImageryTile,
+    gridColumn: 'span 3',
   },
   {
     id: 'motion',
@@ -66,6 +64,7 @@ const TILES: TileConfig[] = [
     color: '#a293ff',
     textColor: '#2d0050',
     component: MotionTile,
+    gridColumn: 'span 3',
   },
 ]
 
@@ -93,7 +92,7 @@ export default function NavContainer() {
           width: '100%',
           height: '100%',
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(6, 1fr)',
           gridTemplateRows: 'repeat(2, 1fr)',
         }}
       >
@@ -108,6 +107,7 @@ export default function NavContainer() {
               textColor={tile.textColor}
               TileComponent={TileComponent}
               onOpenModal={() => setOpenModal(tile.id)}
+              gridColumn={tile.gridColumn}
             />
           )
         })}
@@ -118,7 +118,6 @@ export default function NavContainer() {
 
       {/* Modals */}
       {openModal === 'logo' && <LogoModal onClose={() => setOpenModal(null)} />}
-      {openModal === 'voice-tone' && <VoiceToneModal onClose={() => setOpenModal(null)} />}
       {openModal === 'typography' && <TypographyModal onClose={() => setOpenModal(null)} />}
       {openModal === 'color' && <ColorModal onClose={() => setOpenModal(null)} />}
       {openModal === 'imagery' && <ImageryModal onClose={() => setOpenModal(null)} />}
@@ -128,6 +127,7 @@ export default function NavContainer() {
 }
 
 function GridLines() {
+  const line = 'rgba(0,0,0,0.12)'
   return (
     <div
       style={{
@@ -140,29 +140,14 @@ function GridLines() {
         zIndex: 10,
       }}
     >
+      {/* Horizontal divider between rows */}
+      <div style={{ position: 'absolute', top: '50%', left: 0, width: '100%', height: '1px', background: line }} />
+      {/* Top-row vertical dividers (33% and 66%), top half only */}
       {[33.333, 66.666].map((pct) => (
-        <div
-          key={`v${pct}`}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: `${pct}%`,
-            width: '1px',
-            height: '100%',
-            background: 'rgba(0,0,0,0.12)',
-          }}
-        />
+        <div key={`tv${pct}`} style={{ position: 'absolute', top: 0, left: `${pct}%`, width: '1px', height: '50%', background: line }} />
       ))}
-      <div
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: 0,
-          width: '100%',
-          height: '1px',
-          background: 'rgba(0,0,0,0.12)',
-        }}
-      />
+      {/* Bottom-row vertical divider at 50%, bottom half only */}
+      <div style={{ position: 'absolute', top: '50%', left: '50%', width: '1px', height: '50%', background: line }} />
     </div>
   )
 }

@@ -9,6 +9,7 @@ interface NavTileProps {
   textColor: string
   TileComponent: ComponentType<{ hovered: boolean }>
   onOpenModal?: () => void
+  gridColumn?: string
 }
 
 export default function NavTile({
@@ -18,6 +19,7 @@ export default function NavTile({
   textColor,
   TileComponent,
   onOpenModal,
+  gridColumn,
 }: NavTileProps) {
   return (
     <>
@@ -40,6 +42,7 @@ export default function NavTile({
         color: textColor,
         overflow: 'hidden',
         cursor: 'pointer',
+        ...(gridColumn ? { gridColumn } : {}),
       }}
     >
       <div
